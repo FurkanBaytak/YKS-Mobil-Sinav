@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:yks_quiz_app/model/category.dart';
@@ -7,16 +9,19 @@ import 'package:yks_quiz_app/widget/options_widget.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 
 class QuestionsWidget extends StatelessWidget {
-
   final FlutterTts flutterTts = FlutterTts();
 
   Future _speakQuestion({
-    @required Question question,
+    @required Question question, @required String language
   }) async {
-    await flutterTts.setLanguage("tr-TR");
+    await flutterTts.setQueueMode(0);
+    await flutterTts.setLanguage(language);
     await flutterTts.setPitch(1);
-    await flutterTts.speak(question.text + question.exp);
-
+    await flutterTts.speak(question.textSpeak);
+    await flutterTts.setQueueMode(1);
+    await flutterTts.setLanguage('tr-TR');
+    await flutterTts.speak(question.exp);
+    await flutterTts.setQueueMode(0);
   }
 
   final Category category;
@@ -52,15 +57,18 @@ class QuestionsWidget extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
-                height: 300,
-                child: ListView(children: [
+              ConstrainedBox(
+                constraints: BoxConstraints(
+                  minHeight: 100,
+                ),
+                child: ListView(shrinkWrap: true, children: [
                   ElevatedButton(
                     child: Icon(FontAwesomeIcons.microphone),
-                    onPressed: () => _speakQuestion(question: question),
+                    onPressed: () => _speakQuestion(question: question, language: question.language),
                     style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all(Colors.blue),
-                        textStyle: MaterialStateProperty.all(TextStyle(fontSize: 300))),
+                        textStyle: MaterialStateProperty.all(
+                            TextStyle(fontSize: 300))),
                   ),
                   Text(
                     question.text,
@@ -72,6 +80,14 @@ class QuestionsWidget extends StatelessWidget {
                     question.exp,
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
                     textAlign: TextAlign.justify,
+                  ),
+                  Text(
+                    '\n' + question.date,
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 24,
+                        fontStyle: FontStyle.italic),
+                    textAlign: TextAlign.left,
                   ),
                 ]),
               ),

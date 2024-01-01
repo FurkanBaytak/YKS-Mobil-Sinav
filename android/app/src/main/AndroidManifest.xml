@@ -1,7 +1,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.quiz_app_ii_example">
-   <application
-        android:label="quiz_app_ii_example"
+    package="com.example.yks_quiz_app">
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.TTS_SERVICE" />
+        </intent>
+    </queries>
+    <application
+        android:label="yks_quiz_app"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

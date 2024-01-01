@@ -12,46 +12,44 @@ class OptionsWidget extends StatelessWidget {
 
   final FlutterTts flutterTts = FlutterTts();
   Future _speakOptionA({
-    @required Question question,
+    @required Question question, @required String language
   }) async {
-    await flutterTts.setLanguage("tr-TR");
+    flutterTts.setLanguage(language);
     await flutterTts.setPitch(1);
     await flutterTts.speak(question.optionA);
   }
 
   Future _speakOptionB({
-    @required Question question,
+    @required Question question, @required String language
   }) async {
-    await flutterTts.setLanguage("tr-TR");
+    flutterTts.setLanguage(language);
     await flutterTts.setPitch(1);
     await flutterTts.speak(question.optionB);
   }
 
   Future _speakOptionC({
-    @required Question question,
+    @required Question question, @required String language
   }) async {
-    await flutterTts.setLanguage("tr-TR");
+    flutterTts.setLanguage(language);
     await flutterTts.setPitch(1);
     await flutterTts.speak(question.optionC);
   }
 
   Future _speakOptionD({
-    @required Question question,
+    @required Question question, @required String language
   }) async {
-    await flutterTts.setLanguage("tr-TR");
+    flutterTts.setLanguage(language);
     await flutterTts.setPitch(1);
     await flutterTts.speak(question.optionD);
   }
 
   Future _speakOptionE({
-    @required Question question,
+    @required Question question, @required String language
   }) async {
-    await flutterTts.setLanguage("tr-TR");
+    flutterTts.setLanguage(language);
     await flutterTts.setPitch(1);
     await flutterTts.speak(question.optionE);
   }
-
-
 
    OptionsWidget({
     Key key,
@@ -91,22 +89,22 @@ class OptionsWidget extends StatelessWidget {
   }
 
   Widget buildAnswer(Option option, Question question) => Container(
-        height: 100,
+        height: 80,
         child: Row(children: [
           SizedBox(width: 12),
           ElevatedButton(
               child: Icon(FontAwesomeIcons.microphone),
               onPressed: () {
                 if(option.code == 'A')
-                  return _speakOptionA(question: question);
+                  return _speakOptionA(question: question, language: question.language);
                 else if(option.code == 'B')
-                  return _speakOptionB(question: question);
+                  return _speakOptionB(question: question, language: question.language);
                 else if(option.code == 'C')
-                  return _speakOptionC(question: question);
+                  return _speakOptionC(question: question, language: question.language);
                 else if(option.code == 'D')
-                  return _speakOptionD(question: question);
+                  return _speakOptionD(question: question, language: question.language);
                 else
-                  return _speakOptionE(question: question);
+                  return _speakOptionE(question: question, language: question.language);
               }
           ),
           SizedBox(width: 12),

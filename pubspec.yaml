@@ -13,9 +13,10 @@ dependencies:
 
   # icons
   font_awesome_flutter: ^8.11.0
-  flutter_tts: ^0.6.0
+  flutter_tts: ^2.1.0
 
 dev_dependencies:
+  change_app_package_name: ^1.1.0
   flutter_test:
     sdk: flutter
 
@@ -24,3 +25,4 @@ flutter:
 
   assets:
     - assets/
+    - assets/dersler/

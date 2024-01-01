@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:yks_quiz_app/data/user.dart';
 import 'package:yks_quiz_app/page/ayt_page.dart';
 import 'package:yks_quiz_app/page/tyt_page.dart';
-import 'package:yks_quiz_app/page/yds_page.dart';
+import 'package:yks_quiz_app/page/ydt_page.dart';
 
 class ChoosePage extends StatefulWidget {
   @override
@@ -145,7 +145,7 @@ class _ChoosePage extends State<ChoosePage> with WidgetsBindingObserver {
             child:
                 Column(mainAxisAlignment: MainAxisAlignment.center, children: [
               Text(
-                'YDS',
+                'YDT',
                 style: TextStyle(
                   fontSize: 60.0,
                   fontWeight: FontWeight.w600,
