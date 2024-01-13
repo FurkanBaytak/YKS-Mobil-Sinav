@@ -67,14 +67,11 @@ class _CategoryPageState extends State<CategoryPage> {
       );
 
   void selectOption(Option option) {
-    if (question.isLocked) {
-      return;
-    } else {
+
       setState(() {
-        question.isLocked = true;
         question.selectedOption = option;
       });
-    }
+
   }
 
   void nextQuestion({int index, bool jump = false}) {

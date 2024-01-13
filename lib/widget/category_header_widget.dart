@@ -6,6 +6,7 @@ import 'package:flutter_tts/flutter_tts.dart';
 
 class CategoryHeaderWidget extends StatelessWidget {
 
+
   final FlutterTts flutterTts = FlutterTts();
 
   Future _speakCategory({
@@ -24,12 +25,16 @@ class CategoryHeaderWidget extends StatelessWidget {
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => GestureDetector(
+  Widget build(BuildContext context){
+    var screenWidth = MediaQuery.of(context).size.width;
+    var isTablet = screenWidth > 600;
+   return GestureDetector(
+
         onTap: () => Navigator.of(context).push(MaterialPageRoute(
           builder: (context) => CategoryPage(category: category),
         )),
         child: Container(
-          padding: EdgeInsets.all(12),
+          padding: EdgeInsets.all(isTablet ? 16 : 12),
           decoration: BoxDecoration(
             color: category.backgroundColor,
             borderRadius: BorderRadius.circular(15),
@@ -37,33 +42,42 @@ class CategoryHeaderWidget extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              buildImage(),
+              buildImage(isTablet),
               const SizedBox(height: 12),
               Text(
                 category.categoryName,
                 style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
-                  fontSize: 40,
+                  fontSize: isTablet ? 20 : 12,
 
                 ),
                 textAlign: TextAlign.center,
               ),
-              const SizedBox(height: 12),
+              const SizedBox(height: 5),
               ElevatedButton(
-                child: Icon(FontAwesomeIcons.microphone),
-                onPressed: () => _speakCategory(category: category),
                 style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.black26),
-                    textStyle: MaterialStateProperty.all(TextStyle(fontSize: 300))),
+                  backgroundColor: MaterialStateProperty.all(Colors.black26),
+                  minimumSize: MaterialStateProperty.all(Size.zero),
+                  padding: MaterialStateProperty.all(EdgeInsets.zero),
+                ),
+                onPressed: () => _speakCategory(category: category),
+                child: Container(
+                  width: isTablet ? 50 : 30,
+                  height: isTablet ? 50 : 30,
+                  alignment: Alignment.center,
+                  child: Icon(FontAwesomeIcons.microphone, size: isTablet ? 24 : 16),
+                ),
               ),
+
             ],
           ),
         ),
       );
+  }
 
-  Widget buildImage() => Container(
-    height: 150,
+  Widget buildImage(bool isTablet) => Container(
+    height: isTablet ? 100 : 30,
     decoration: BoxDecoration(
       color: category.backgroundColor,
       borderRadius: BorderRadius.circular(15),

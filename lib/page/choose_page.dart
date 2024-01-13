@@ -1,12 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tts/flutter_tts.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:yks_quiz_app/data/user.dart';
 import 'package:yks_quiz_app/page/ayt_page.dart';
 import 'package:yks_quiz_app/page/tyt_page.dart';
 import 'package:yks_quiz_app/page/ydt_page.dart';
 
+import '../model/category.dart';
+
 class ChoosePage extends StatefulWidget {
   @override
   _ChoosePage createState() => _ChoosePage();
+}
+
+final FlutterTts flutterTts = FlutterTts();
+
+Future _speakLesson(String s) async {
+  await flutterTts.setLanguage("tr-TR");
+  await flutterTts.setPitch(1);
+  await flutterTts.speak(s);
 }
 
 class _ChoosePage extends State<ChoosePage> with WidgetsBindingObserver {
@@ -85,6 +97,16 @@ class _ChoosePage extends State<ChoosePage> with WidgetsBindingObserver {
                     color: Colors.white,
                   ),
                 ),
+                const SizedBox(height: 12),
+                ElevatedButton(
+                  child: Icon(FontAwesomeIcons.microphone),
+                  onPressed: () => _speakLesson('Temel Yeterlilik Testi'),
+                  style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all(Colors.black26),
+                      textStyle:
+                          MaterialStateProperty.all(TextStyle(fontSize: 300))),
+                ),
               ],
             ),
           ),
@@ -92,38 +114,48 @@ class _ChoosePage extends State<ChoosePage> with WidgetsBindingObserver {
       );
 
   Widget _buildMidContainer() => Flexible(
-    flex: 5,
-    child: GestureDetector(
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => AYT_Page()),
-        );
-      },
-      child: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [Colors.green, Colors.greenAccent],
-            begin: Alignment.topRight,
-            end: Alignment.bottomLeft,
-          ),
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              'AYT',
-              style: TextStyle(
-                fontSize: 60.0,
-                fontWeight: FontWeight.w600,
-                color: Colors.white,
+        flex: 5,
+        child: GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => AYT_Page()),
+            );
+          },
+          child: Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [Colors.green, Colors.greenAccent],
+                begin: Alignment.topRight,
+                end: Alignment.bottomLeft,
               ),
             ),
-          ],
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'AYT',
+                  style: TextStyle(
+                    fontSize: 60.0,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.white,
+                  ),
+                ),
+                const SizedBox(height: 12),
+                ElevatedButton(
+                  child: Icon(FontAwesomeIcons.microphone),
+                  onPressed: () => _speakLesson('Alan Yeterlilik Testi'),
+                  style: ButtonStyle(
+                      backgroundColor:
+                      MaterialStateProperty.all(Colors.black26),
+                      textStyle:
+                      MaterialStateProperty.all(TextStyle(fontSize: 300))),
+                ),
+              ],
+            ),
+          ),
         ),
-      ),
-    ),
-  );
+      );
 
   Widget _buildBottomContainer() => Flexible(
         flex: 5,
@@ -152,6 +184,16 @@ class _ChoosePage extends State<ChoosePage> with WidgetsBindingObserver {
                   color: Colors.white,
                 ),
               ),
+                  const SizedBox(height: 12),
+                  ElevatedButton(
+                    child: Icon(FontAwesomeIcons.microphone),
+                    onPressed: () => _speakLesson('Yabancı Dil Testi'),
+                    style: ButtonStyle(
+                        backgroundColor:
+                        MaterialStateProperty.all(Colors.black26),
+                        textStyle:
+                        MaterialStateProperty.all(TextStyle(fontSize: 300))),
+                  ),
             ]),
           ),
         ),

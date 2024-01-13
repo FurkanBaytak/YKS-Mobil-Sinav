@@ -13,7 +13,7 @@ class Question {
   final String exp;
   final String date;
   final List<Option> options;
-  bool isLocked;
+
   Option selectedOption;
 
   Question({
@@ -28,7 +28,7 @@ class Question {
     @required this.exp,
     @required this.date,
     @required this.options,
-    this.isLocked = false,
+
     this.selectedOption,
   });
 }
