@@ -1,16 +1,13 @@
-# yks_quiz_app
+# YKS MOBIL SINAV
+YKS döneminde sınava hazırlanan öğrenciler için hazırlanmış erişilebilir bir quiz uygulaması. 
+Bu uygulama içerisinde bulunan soruları ve cevap şıklarını sesli okuma özellikleriyle, görme engelli kullanıcılar için erişiebilir bir uygulamadır.
+[Furkan BAYTAK](https://github.com/FurkanBaytak) tarafından geliştirilen uygulama, Flutter ile mobil uygulama geliştirme alanında kendini geliştirmek için tasarlanmıştır.
 
-A new Flutter project.
+## ERİŞİLEBİLİRLİK ÖZELLİKLERİ
+- Soruların üzerinde bulunan butonlar sayesinde kullanıcılara ana dillerinde akıcı bir metin okuma sağlaması,
+- YKS sınavında bulunan yabancı dil sorularının kendi dilinde okunulması,
+- Matematiksel ifadelerin ve Fen alanında bulunan belirli sembollerin okunuşunun akıcı bir şekilde okuma diline uyarlanması,
+- Türkçe sorularında boşluk doldurma sorularında soru okuması esnasında sadece şıkların değil boşlukların doldurularak tüm metnin okunması,
+- Birden çok seçeneği olan seçim sorularında (Örneğin: I,II,II) şıkların ve metinlerin birlikte okunarak kullanıcıların seçimlerine kolaylık sağlanması.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Ve bahsedilenler gibi daha birçok erişebilirlik özellikleri düşünülerek geliştirilmiştir. 
