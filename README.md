@@ -1,6 +1,6 @@
 # YKS MOBIL SINAV
 YKS döneminde sınava hazırlanan öğrenciler için hazırlanmış erişilebilir bir quiz uygulaması. 
-Bu uygulama içerisinde bulunan soruları ve cevap şıklarını sesli okuma özellikleriyle, görme engelli kullanıcılar için erişiebilir bir uygulamadır.
+Bu uygulama içerisinde bulunan soruları ve cevap şıklarını sesli okuma özellikleriyle, görme engelli kullanıcılar için erişilebilir bir uygulamadır.
 [Furkan BAYTAK](https://github.com/FurkanBaytak) tarafından geliştirilen uygulama, Flutter ile mobil uygulama geliştirme alanında kendini geliştirmek için tasarlanmıştır.
 
 ## ERİŞİLEBİLİRLİK ÖZELLİKLERİ
